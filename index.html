@@ -151,13 +151,18 @@
     </p>
 
     <div class="run-tabs has-text-centered">
-      <button class="button is-rounded is-dark run-tab" data-src="static/interactive/run-head.html">Head, with exclusions</button>
-      <button class="button is-rounded is-dark is-outlined run-tab" data-src="static/interactive/run-contact.html">Anticipated contact</button>
-      <button class="button is-rounded is-dark is-outlined run-tab" data-src="static/interactive/run-stripes.html">Striped regions</button>
+      <button class="button is-rounded is-dark run-tab" data-src="static/interactive/run-head.html" data-query="segment the cat's head without what she uses to hear and see">Head, with exclusions</button>
+      <button class="button is-rounded is-dark is-outlined run-tab" data-src="static/interactive/run-contact.html" data-query="What parts are about to make contact">Anticipated contact</button>
+      <button class="button is-rounded is-dark is-outlined run-tab" data-src="static/interactive/run-stripes.html" data-query="Segment everything with a striped pattern">Striped regions</button>
     </div>
 
+    <p class="run-query"><span>Query</span> <em data-run-query>&ldquo;segment the cat&rsquo;s head without what she uses to hear and see&rdquo;</em></p>
+
     <div class="run-frame">
-      <!-- src is set when the frame scrolls into view, so the replay starts when seen. -->
+      <!-- src is set when the frame scrolls into view, so the replay starts when
+           seen rather than playing out unwatched. The placeholder covers the
+           download, which is otherwise an empty black box. -->
+      <p class="run-loading" data-run-loading>Loading the run&hellip;</p>
       <iframe id="run-viewer" title="VASA run replay"></iframe>
     </div>
     <noscript>
@@ -834,6 +839,29 @@
     var tabs = document.querySelectorAll('.run-tab');
     var current = tabs[0].dataset.src;
     var seen = false;
+    var loading = document.querySelector('[data-run-loading]');
+    var queryOut = document.querySelector('[data-run-query]');
+
+    function setQuery(tab) {
+      if (queryOut) { queryOut.textContent = '\u201c' + tab.dataset.query + '\u201d'; }
+    }
+    setQuery(tabs[0]);
+
+    // Warm the HTTP cache while the visitor is still reading the page above,
+    // so setting src paints almost at once instead of after a fresh download.
+    // The body has to be drained: an unread response keeps its connection open
+    // and never lands in the cache, which delays the very load it should help.
+    function warm(url) {
+      if (!window.fetch) { return; }
+      fetch(url).then(function (r) { return r.blob(); }).catch(function () {});
+    }
+    if (window.requestIdleCallback) { requestIdleCallback(function () { warm(current); }); }
+    else { window.addEventListener('load', function () { warm(current); }); }
+
+    frame.addEventListener('load', function () {
+      if (loading) { loading.hidden = true; }
+      frame.classList.add('is-ready');
+    });
 
     // The replay plays as soon as it loads, so hold the load until it is on
     // screen. Without IntersectionObserver, load straight away.
@@ -842,9 +870,15 @@
       seen = true;
       frame.src = current;
     }
+
+    // The other two runs are only fetched once the visitor has shown interest
+    // in this section, so an ordinary reader never downloads them.
+    function warmRest() {
+      tabs.forEach(function (t) { if (t.dataset.src !== current) { warm(t.dataset.src); } });
+    }
     if ('IntersectionObserver' in window) {
       var watch = new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting) { start(); watch.disconnect(); }
+        if (entries[0].isIntersecting) { start(); watch.disconnect(); setTimeout(warmRest, 4000); }
       }, { threshold: 0.35 });
       watch.observe(frame);
     } else {
@@ -859,7 +893,10 @@
         tab.classList.remove('is-outlined');
         current = tab.dataset.src;
         seen = true;
+        if (loading) { loading.hidden = false; }
+        frame.classList.remove('is-ready');
         frame.src = current;
+        setQuery(tab);
       });
     });
   })();

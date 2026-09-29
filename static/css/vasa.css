@@ -292,3 +292,48 @@
 .content ul.ablation-steps li + li {
   margin-top: 0.55em;
 }
+
+/* Shown until the replay's own document has painted. */
+.run-frame {
+  position: relative;
+}
+
+.run-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  color: #8a8a8a;
+  font-size: 0.95rem;
+}
+
+.run-loading[hidden] {
+  display: none;
+}
+
+.run-frame iframe {
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+.run-frame iframe.is-ready {
+  opacity: 1;
+}
+
+/* The query each replay was launched with, left aligned against the frame. */
+.run-query {
+  max-width: 850px;
+  margin: 0 auto 0.7rem !important;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.run-query span {
+  color: #7a7a7a;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-right: 0.45em;
+}
