@@ -1,0 +1,294 @@
+/* VASA-specific additions on top of the Academic Project Page Template. */
+
+.center-image {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Figures with a white background sit on grey sections too; multiply lets
+   the white take the section's colour instead of showing as a box. */
+.blend-img-background {
+  mix-blend-mode: multiply;
+}
+
+/* Header button icons are inline SVG, sized to sit like the template's. */
+.publication-links .icon svg {
+  display: block;
+}
+
+/* ------------------------------------------------------- interactive runs */
+
+.run-tabs {
+  margin-bottom: 1.1rem;
+}
+
+.run-tabs .button {
+  margin: 0 4px 6px;
+}
+
+.run-frame {
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* The viewer sizes itself to its own viewport, so the frame's size decides
+   which of its layouts it picks: three columns from 1100px wide, stacked
+   below that. */
+.run-frame iframe {
+  display: block;
+  width: 100%;
+  height: 840px;
+  border: 0;
+}
+
+/* Role colors, darkened from the viewer's palette for contrast on white. */
+.role-agent    { color: #b5801f; font-weight: 600; }
+.role-sam3     { color: #2f6fb0; font-weight: 600; }
+.role-mask     { color: #1f8a68; font-weight: 600; }
+.role-strategy { color: #6f4fa0; font-weight: 600; }
+
+/* ----------------------------------------------------------------- tables */
+
+/* The template's sections are flex columns with auto-margined containers, so
+   a container grows to fit a wide table and drags the page sideways. Pinning
+   its width lets .table-scroll do the scrolling instead. */
+.hero > .container {
+  width: 100%;
+  min-width: 0;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.results-table {
+  font-size: 0.82rem;
+  background: transparent;
+  margin-bottom: 0.4rem;
+}
+
+.results-table th,
+.results-table td {
+  padding: 3px 7px;
+  vertical-align: middle;
+  white-space: nowrap;
+  border: 0;
+}
+
+.results-table thead th {
+  border-bottom: 1px solid #363636;
+  color: #363636;
+  font-weight: 600;
+}
+
+.results-table thead tr:first-child th {
+  border-bottom: 0;
+}
+
+.results-table thead tr:first-child th[colspan] {
+  border-bottom: 1px solid #b5b5b5;
+}
+
+/* A rule between metric groups, standing in for LaTeX's \cmidrule spacing. */
+.results-table .group-l {
+  border-left: 1px solid #dbdbdb;
+  padding-left: 10px;
+}
+
+/* The secondary metric column, matching the paper's shaded column. */
+.results-table .shade {
+  background: rgba(0, 0, 0, 0.045);
+}
+
+.results-table .group-row td {
+  padding-top: 9px;
+  color: #7a7a7a;
+  font-size: 0.8rem;
+}
+
+.results-table .is-dimmed td {
+  color: #b5b5b5;
+}
+
+.results-table .thin-rule td {
+  border-top: 1px solid #ededed;
+}
+
+.results-table .end-group td {
+  border-bottom: 1px solid #ededed;
+}
+
+.results-table .best {
+  font-weight: 700;
+  color: #0a0a0a;
+}
+
+.results-table .second {
+  text-decoration: underline;
+}
+
+.results-table .ours-row {
+  background: rgba(31, 138, 104, 0.06);
+}
+
+.results-table .gain-row td {
+  color: #1f8a68;
+  font-weight: 700;
+  border-top: 1px solid #363636;
+}
+
+.results-table .cmark { color: #1f8a68; }
+.results-table .xmark { color: #cc3b2f; }
+
+.table-note {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: #4a4a4a;
+}
+
+/* Body links stay black like the template's related-work list, but underlined
+   so they are still findable. Hero, footer and button links keep their own. */
+.section .content a {
+  color: #0a0a0a;
+  text-decoration: underline;
+}
+
+.section .content a:hover {
+  color: hsl(204, 86%, 45%);
+}
+
+.content pre {
+  font-size: 0.85rem;
+}
+
+/* ---------------------------------------------------------- narrow screens */
+
+@media (max-width: 1215px) {
+  .run-frame iframe { height: 780px; }
+}
+
+@media (max-width: 640px) {
+  .run-frame iframe { height: 680px; }
+  /* Bulma's section padding would leave the replay too narrow on a phone. */
+  #interactive { padding-left: 0.75rem; padding-right: 0.75rem; }
+}
+
+/* Tables read best on white, whatever the section colour. */
+.table-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem 1.25rem 0.75rem;
+  margin-bottom: 0.9rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 640px) {
+  .table-card { padding: 0.6rem 0.6rem 0.4rem; }
+}
+
+.run-invite {
+  margin: 0 auto 1.3rem;
+}
+
+.run-invite a {
+  color: hsl(204, 86%, 45%);
+  text-decoration: underline;
+}
+
+/* The main table keeps its natural width, so its columns sit together
+   instead of being spread across the page. */
+.table-card.is-compact {
+  width: fit-content;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Capability panels: a real gap between plots, so neighbouring axis labels
+   never run into each other. */
+.plot-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+  margin-bottom: 1rem;
+}
+
+/* The template gives figures inside .content side and top margins, which
+   would shrink the panels and push all but the first one down. */
+.content .plot-row figure {
+  margin: 0 !important;
+}
+
+.plot-row img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+}
+
+.plot-row figcaption {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #4a4a4a;
+  margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+  .plot-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* A displayed formula, set without a maths library. */
+.formula {
+  text-align: center;
+  font-family: 'Castoro', 'Times New Roman', serif;
+  font-size: 1.15rem;
+  margin: 0.2rem 0 1rem !important;
+}
+
+.formula .frac {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+  text-align: center;
+  margin: 0 0.25em;
+  line-height: 1.25;
+}
+
+.formula .frac > span:first-child {
+  border-bottom: 1px solid currentColor;
+  padding: 0 0.3em 1px;
+}
+
+.formula .frac > span:last-child {
+  padding: 1px 0.3em 0;
+}
+
+.formula .sum {
+  font-size: 1.35em;
+  vertical-align: middle;
+}
+
+.formula .sum sub {
+  font-size: 0.5em;
+}
+
+/* Several formulas side by side, wrapping on narrow screens. */
+.formula .eq {
+  display: inline-block;
+  margin: 0.3rem 1.1rem;
+  white-space: nowrap;
+}
+
+.content ul.ablation-steps {
+  margin: 0 0 0 1.1em;
+}
+
+.content ul.ablation-steps li + li {
+  margin-top: 0.55em;
+}

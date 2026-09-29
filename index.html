@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners -->
+  <meta name="description" content="VASA: Vision Harnessing Agent for Open Ad-hoc Segmentation">
+  <meta property="og:title" content="VASA: Vision Harnessing Agent for Open Ad-hoc Segmentation"/>
+  <meta property="og:description" content="VASA is a training-free vision harnessing agent for open ad-hoc segmentation: segmenting concepts defined on the fly through parts, relations, exclusions, and collections."/>
+  <meta property="og:url" content="https://vasa-2026.github.io/"/>
+  <!-- Link previews only resolve absolute image URLs. -->
+  <meta property="og:image" content="https://vasa-2026.github.io/static/images/banner.jpg" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+  <meta name="twitter:title" content="VASA: Vision Harnessing Agent for Open Ad-hoc Segmentation">
+  <meta name="twitter:description" content="VASA is a training-free vision harnessing agent for open ad-hoc segmentation: segmenting concepts defined on the fly through parts, relations, exclusions, and collections.">
+  <meta name="twitter:image" content="https://vasa-2026.github.io/static/images/banner.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="keywords" content="Open Ad-hoc Segmentation, Vision Harnessing Agent, VLM Agent, SAM3, Referring Segmentation, Part Segmentation, Computer Vision">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>VASA: Vision Harnessing Agent for Open Ad-hoc Segmentation</title>
+
+  <!-- Favicon and apple touch icon -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="static/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicon-16x16.png">
+  <link rel="manifest" href="static/images/site.webmanifest">
+
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/vasa.css">
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">VASA: Vision Harnessing Agent for Open Ad-hoc Segmentation</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block"><a href="https://wayne2wang.github.io/" target="_blank">Zilin Wang</a>,</span>
+              <span class="author-block"><a href="https://web.eecs.umich.edu/~stellayu/" target="_blank">Stella X. Yu</a></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">University of Michigan<br>Preprint 2026</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+
+                <!-- ArXiv abstract Link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2605.19410" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+                <!-- Github link -->
+                <span class="link-block">
+                  <a href="https://github.com/Wayne2Wang/VASA" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <!-- Interactive replay link -->
+                <span class="link-block">
+                  <a href="#interactive" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M4 2.2v11.6L13.5 8z"/></svg>
+                    </span>
+                    <span>Demo</span>
+                  </a>
+                </span>
+
+                <!-- Citation link -->
+                <span class="link-block">
+                  <a href="#BibTeX" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon" style="vertical-align: middle; font-size: 20px;">&#128278;</span>
+                      <span style="vertical-align: middle;">Citation</span>
+                  </a>
+                </span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- Teaser figure -->
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <p>
+        <strong>TL;DR:</strong> VASA is a training-free vision harnessing agent for open ad-hoc segmentation: segmenting concepts defined on the fly through parts, relations, exclusions, and collections. Its visual harness coordinates a VLM and SAM3 to construct the requested mask, making visual progress persistent, inspectable, and editable.
+      </p>
+      <br>
+
+      <img src="static/images/teaser.jpg" width="1501" height="569" alt="LISA, Seg-Zero, SegAgent, SAM3 Agent and VASA compared on three prompts for the same image of a cat" class="blend-img-background center-image" style="max-width: 100%; height: auto;" />
+
+      <br>
+      <p>
+        <strong>Open ad-hoc segmentation requires constructing visual concepts on the fly, not merely retrieving common ones.</strong>
+        We compare LISA, Seg-Zero, SegAgent, SAM3 Agent, and VASA (our proposed vision harnessing agent), on three prompts for the same image.
+        <strong>Row 1</strong> asks for a known visual whole, <em>cat</em>; all methods succeed.
+        <strong>Row 2</strong> asks for an ad-hoc collection, <em>the cat's right paw and the stick she is reaching for</em>; baselines retrieve only one part of the requested composition, while VASA captures both.
+        <strong>Row 3</strong> asks for an exclusion-defined concept, <em>the cat's head without the ears and eyes</em>; baselines confuse it with <em>cat head</em> or <em>cat</em>, while VASA constructs the requested mask.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- End teaser figure -->
+
+
+<!-- Interactive run replay -->
+
+<section class="section" id="interactive" style="padding-top:1rem">
+  <div class="container is-max-widescreen">
+    <h2 class="title is-3 has-text-centered">Watch VASA Construct a Mask</h2>
+    <p style="max-width:850px;margin:0 auto 0.6rem;line-height:1.6">
+      Replay three VASA runs, one action at a time: the <span class="role-agent">agent</span> sets a
+      <span class="role-strategy">strategy</span>, calls <span class="role-sam3">SAM3</span>, and edits the
+      <span class="role-mask">working mask</span>.
+      Step headlines are generated by the viewer, and retried calls are removed for clarity.
+    </p>
+
+    <p class="has-text-centered run-invite">
+      Try VASA on your own image and query with our
+      <a href="https://github.com/Wayne2Wang/VASA" target="_blank">code</a>.
+      You can run this on your Mac!
+    </p>
+
+    <div class="run-tabs has-text-centered">
+      <button class="button is-rounded is-dark run-tab" data-src="static/interactive/run-head.html">Head, with exclusions</button>
+      <button class="button is-rounded is-dark is-outlined run-tab" data-src="static/interactive/run-contact.html">Anticipated contact</button>
+      <button class="button is-rounded is-dark is-outlined run-tab" data-src="static/interactive/run-stripes.html">Striped regions</button>
+    </div>
+
+    <div class="run-frame">
+      <!-- src is set when the frame scrolls into view, so the replay starts when seen. -->
+      <iframe id="run-viewer" title="VASA run replay"></iframe>
+    </div>
+    <noscript>
+      <p class="has-text-centered">
+        Open a replay directly:
+        <a href="static/interactive/run-head.html">head</a>,
+        <a href="static/interactive/run-contact.html">contact</a>,
+        <a href="static/interactive/run-stripes.html">stripes</a>.
+      </p>
+    </noscript>
+  </div>
+</section>
+
+<!-- End interactive run replay -->
+
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Segmentation has become easy when the concept is known, requiring retrieval of a learned visual grounding from text. It remains hard for open ad-hoc concepts, where the grounding may not exist as one learned mask and must often be constructed from image evidence through parts, relations, exclusions, and collections. We propose a Vision-guided Ad-hoc Segmentation Agent (VASA), the first vision harnessing agent for open ad-hoc segmentation. VASA is training-free and couples a VLM agent, a segmentation foundation model, and a visual harness that maintains a working mask to make visual progress persistent, inspectable, and editable. Rather than revising text prompts alone, it plans visual operations, invokes segmentation tools, inspects results, edits the mask, and recovers from errors. We construct PARS, a new benchmark that turns part-level labels into open ad-hoc concepts through long-form definition queries. We show that VASA is consistently effective across six VLMs with varying capabilities. Using Qwen3-VL 32B Thinking as the VLM, VASA outperforms various baselines on PARS, surpassing SAM3 Agent by 13.5%&ndash;25.3%. On RefCOCOm, VASA improves over SAM3 Agent by 4.8%&ndash;8.8% and over other agentic baselines by more. VASA also remains competitive with SAM3 Agent on ReasonSeg for common, named concepts. These results validate VASA's agentic visual construction for open ad-hoc segmentation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<!-- Related work -->
+
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Related Work</h2>
+          <div class="content has-text-justified">
+            <ul type="circle">
+              <li><a href="https://openreview.net/forum?id=r35clVtGzw" target="_blank">SAM 3: Segment Anything with Concepts</a> by Nicolas Carion et al. (ICLR 2026)</li>
+              <li><a href="https://arxiv.org/abs/2308.00692" target="_blank">LISA: Reasoning Segmentation via Large Language Model</a> by Xin Lai et al. (2023)</li>
+              <li><a href="https://arxiv.org/abs/2503.06520" target="_blank">Seg-Zero: Reasoning-Chain Guided Segmentation via Cognitive Reinforcement</a> by Yuqi Liu et al. (2025)</li>
+              <li><a href="https://arxiv.org/abs/2503.08625" target="_blank">SegAgent: Exploring Pixel Understanding Capabilities in MLLMs by Imitating Human Annotator Trajectories</a> by Muzhi Zhu et al. (2025)</li>
+              <li><a href="https://arxiv.org/abs/2312.08007" target="_blank">Unveiling Parts Beyond Objects: Towards Finer-Granularity Referring Expression Segmentation</a> by Wenxuan Wang et al. (2024)</li>
+              <li><a href="https://arxiv.org/abs/2112.00933" target="_blank">PartImageNet: A Large, High-Quality Dataset of Parts</a> by Ju He et al. (2022)</li>
+              <li><a href="https://arxiv.org/abs/2512.16202" target="_blank">Open Ad-hoc Categorization with Contextualized Feature Learning</a> by Zilin Wang et al. (CVPR 2025)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- End Related work -->
+
+
+<!-- Walkthrough -->
+
+<section class="section hero is-small is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Searching Over Prompts vs. Constructing a Solution</h2>
+          <img src="static/images/walkthrough.png" width="1564" height="637" alt="Comparison of SAM3 Agent and VASA workflows on the query: the cat's head without the ears and eyes" class="blend-img-background center-image" loading="lazy" />
+          <p>
+            <strong>VASA reasons, constructs, and validates an open ad-hoc solution, while SAM3 Agent searches over text prompts.</strong>
+            We consider the query <em>the cat's head, without the ears and eyes</em>.
+            <strong>Top:</strong> SAM3 Agent revises text queries to SAM3, trying prompts like <em>cat muzzle</em>. Each trial is a fresh retrieval attempt: Intermediate masks are not preserved for the final answer.
+            <strong>Bottom:</strong> VASA instead plans a visual strategy, maintains a persistent working mask, and updates it via executable operations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- End walkthrough -->
+
+
+<!-- Method -->
+
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Method: A Complete Visual Harness Around the VLM</h2>
+          <img src="static/images/method.png" width="1923" height="431" alt="The five components of the VASA visual harness: state management, planning, tool calls, constraints, and error recovery" class="blend-img-background center-image" loading="lazy" />
+          <p>
+            <strong>VASA provides a complete visual harness around VLMs for open ad-hoc segmentation.</strong>
+            The five harness components form the full environment that supports steady visual progress, enabling complex open ad-hoc concepts to be progressively constructed from simpler visual primitives. The harness structures execution while leaving the VLM free to choose strategies, prompts, and edits.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- End method -->
+
+
+<!-- PARS benchmark -->
+
+<section class="section hero is-small is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">PARS: PartImageNet Ad-hoc Referring Segmentation</h2>
+          <img src="static/images/pars.png" width="1612" height="239" alt="The semi-automatic pipeline that turns PartImageNet class labels into long-form open ad-hoc definition queries" class="blend-img-background center-image" loading="lazy" />
+          <p>
+            <strong>PARS provides detailed long-form descriptions for open ad-hoc concepts via a semi-automatic pipeline.</strong>
+            In PARS, we replace the original class names from PartImageNet with detailed queries because short names often leave the intended open ad-hoc concepts ambiguous.
+            We then divide them into 937 <em>open ad-hoc concepts</em> and 1,084 <em>common concepts</em> across 2,021 images based on VLM's familiarity.
+          </p>
+          <p>
+            Following common practice, we adopt generalized Intersection-over-Union (gIoU) and cumulative Intersection-over-Union (cIoU), and introduce <strong>xIoU</strong> for evaluating <em>cross-concept confusion</em> in datasets like PARS, where all relevant parts of objects are annotated.
+            Formally, given predicted mask <em>P<sub>i</sub></em>, ground-truth target mask <em>G<sub>i</sub></em>, and <em>O<sub>i</sub></em>, the union of all other annotated concept masks in the same image excluding the target concept, the metrics are defined as:
+          </p>
+          <p class="formula">
+            <span class="eq">gIoU = <span class="frac"><span>1</span><span><em>N</em></span></span> <span class="sum">&sum;<sub><em>i</em></sub></span> <span class="frac"><span>|<em>P<sub>i</sub></em> &cap; <em>G<sub>i</sub></em>|</span><span>|<em>P<sub>i</sub></em> &cup; <em>G<sub>i</sub></em>|</span></span></span>
+            <span class="eq">cIoU = <span class="frac"><span><span class="sum">&sum;<sub><em>i</em></sub></span> |<em>P<sub>i</sub></em> &cap; <em>G<sub>i</sub></em>|</span><span><span class="sum">&sum;<sub><em>i</em></sub></span> |<em>P<sub>i</sub></em> &cup; <em>G<sub>i</sub></em>|</span></span></span>
+            <span class="eq">xIoU = <span class="frac"><span>1</span><span><em>N</em></span></span> <span class="sum">&sum;<sub><em>i</em></sub></span> <span class="frac"><span>|<em>P<sub>i</sub></em> &cap; <em>O<sub>i</sub></em>|</span><span>|<em>P<sub>i</sub></em>|</span></span></span>
+          </p>
+          <p>
+            Intuitively, xIoU measures how often predictions incorrectly include regions belonging to other close concepts in the same image.
+            xIoU captures fine-grained mistakes that cause only small IoU drops but are critical for perfect segmentation and conceptual correctness.
+            Since xIoU can be trivially reduced by conservative masks, we use it as a secondary metric alongside gIoU and cIoU.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- End PARS benchmark -->
+
+
+<!-- Main results -->
+
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="content">
+      <h2 class="title is-3 has-text-centered">Results on PARS</h2>
+      <p>
+        Our results show that <em>the effectiveness of a segmentation agent depends strongly on how it is harnessed</em>.
+        Across all six VLMs, SAM3 Agent's performance saturates within a narrow range of 39.6%&ndash;40.8% ad-hoc gIoU.
+        In contrast, VASA with the oldest VLM, Gemini 2.5 Flash Lite, already outperforms SAM3 Agent with the latest DeepSeek V4.1 Flash by 7.2%.
+        This gap grows to 19.1% when VASA uses the same DeepSeek V4.1 Flash backbone.
+        The reduction in ad-hoc xIoU from 59.0% to 30.4% further shows that VASA more clearly distinguishes the requested concepts from related but incorrect regions and excludes those regions from its predictions.
+      </p>
+
+      <div class="table-card is-compact"><div class="table-scroll">
+        <table class="table is-narrow results-table">
+          <thead>
+            <tr>
+              <th rowspan="2">Method</th>
+              <th rowspan="2">VLM Version</th>
+              <th rowspan="2" class="has-text-centered">Train.<br>Free</th>
+              <th colspan="3" class="has-text-centered group-l">Ad-hoc Concepts</th>
+              <th colspan="3" class="has-text-centered group-l">Common Concepts</th>
+              <th colspan="3" class="has-text-centered group-l">Total</th>
+            </tr>
+            <tr>
+              <th class="has-text-centered group-l">gIoU</th><th class="has-text-centered">cIoU</th><th class="has-text-centered shade">xIoU&darr;</th>
+              <th class="has-text-centered group-l">gIoU</th><th class="has-text-centered">cIoU</th><th class="has-text-centered shade">xIoU&darr;</th>
+              <th class="has-text-centered group-l">gIoU</th><th class="has-text-centered">cIoU</th><th class="has-text-centered shade">xIoU&darr;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="group-row"><td colspan="12"><em>Fully Supervised Segmenter</em></td></tr>
+            <tr class="is-dimmed">
+              <td>VLPart</td><td>N/A</td><td class="has-text-centered">N/A</td>
+              <td class="group-l">55.2</td><td>53.8</td><td class="shade">35.1</td>
+              <td class="group-l">60.5</td><td>73.3</td><td class="shade">10.7</td>
+              <td class="group-l">57.5</td><td>63.2</td><td class="shade">23.9</td>
+            </tr>
+
+            <tr class="group-row"><td colspan="12"><em>Open-Vocabulary Segmenter</em></td></tr>
+            <tr>
+              <td>OVSeg</td><td>N/A</td><td class="has-text-centered">N/A</td>
+              <td class="group-l">34.4</td><td>27.6</td><td class="shade">42.2</td>
+              <td class="group-l">46.0</td><td>43.0</td><td class="shade">20.7</td>
+              <td class="group-l">39.3</td><td>34.2</td><td class="shade">33.5</td>
+            </tr>
+            <tr>
+              <td>Semantic-SAM<sup>*</sup></td><td>N/A</td><td class="has-text-centered">N/A</td>
+              <td class="group-l">39.2</td><td>30.4</td><td class="shade">45.2</td>
+              <td class="group-l">51.7</td><td>53.7</td><td class="shade">25.7</td>
+              <td class="group-l">44.5</td><td>39.4</td><td class="shade">38.4</td>
+            </tr>
+            <tr>
+              <td>SAM3</td><td>N/A</td><td class="has-text-centered">N/A</td>
+              <td class="group-l">34.1</td><td>36.1</td><td class="shade">59.8</td>
+              <td class="group-l">41.8</td><td>57.8</td><td class="shade">30.6</td>
+              <td class="group-l">37.3</td><td>45.0</td><td class="shade">48.9</td>
+            </tr>
+            <tr>
+              <td>SAM3-I</td><td>N/A</td><td class="has-text-centered">N/A</td>
+              <td class="group-l">45.8</td><td>47.1</td><td class="shade">26.2</td>
+              <td class="group-l">38.3</td><td>46.0</td><td class="shade">30.4</td>
+              <td class="group-l">42.6</td><td>46.5</td><td class="shade">28.4</td>
+            </tr>
+
+            <tr class="group-row"><td colspan="12"><em>VLM as Visual Reasoner</em></td></tr>
+            <tr>
+              <td>LISA</td><td>Llama2 13B</td><td class="has-text-centered xmark">&#10007;</td>
+              <td class="group-l">37.9</td><td>39.9</td><td class="shade">45.0</td>
+              <td class="group-l">49.0</td><td>59.7</td><td class="shade">19.2</td>
+              <td class="group-l">42.6</td><td>49.4</td><td class="shade">32.9</td>
+            </tr>
+            <tr>
+              <td>LISA++</td><td>LLaVA1.5 7B</td><td class="has-text-centered xmark">&#10007;</td>
+              <td class="group-l">35.2</td><td>33.7</td><td class="shade">52.6</td>
+              <td class="group-l">51.8</td><td>50.4</td><td class="shade">25.4</td>
+              <td class="group-l">42.3</td><td>41.5</td><td class="shade">41.0</td>
+            </tr>
+            <tr>
+              <td>VisionReasoner</td><td>Qwen2.5-VL 7B</td><td class="has-text-centered xmark">&#10007;</td>
+              <td class="group-l">27.2</td><td>28.8</td><td class="shade">47.9</td>
+              <td class="group-l">29.4</td><td>41.9</td><td class="shade">16.5</td>
+              <td class="group-l">28.1</td><td>35.0</td><td class="shade">34.5</td>
+            </tr>
+            <tr>
+              <td>Seg-Zero</td><td>Qwen2.5-VL 7B</td><td class="has-text-centered xmark">&#10007;</td>
+              <td class="group-l">40.8</td><td>39.6</td><td class="shade">58.2</td>
+              <td class="group-l">57.2</td><td>66.9</td><td class="shade">30.3</td>
+              <td class="group-l">47.8</td><td>50.8</td><td class="shade">47.4</td>
+            </tr>
+            <tr>
+              <td>RESAnything</td><td>Qwen2.5-VL 7B</td><td class="has-text-centered cmark">&#10003;</td>
+              <td class="group-l">33.1</td><td>34.0</td><td class="shade">49.7</td>
+              <td class="group-l">45.2</td><td>51.0</td><td class="shade">22.8</td>
+              <td class="group-l">38.2</td><td>41.8</td><td class="shade">38.1</td>
+            </tr>
+
+            <tr class="group-row"><td colspan="12"><em>Context Agent for Segmentation</em></td></tr>
+            <tr>
+              <td>CoReS</td><td>LLaVA 7B</td><td class="has-text-centered xmark">&#10007;</td>
+              <td class="group-l">33.0</td><td>34.1</td><td class="shade">36.2</td>
+              <td class="group-l">42.2</td><td>53.4</td><td class="shade">19.7</td>
+              <td class="group-l">36.9</td><td>44.0</td><td class="shade">27.5</td>
+            </tr>
+            <tr>
+              <td>SegAgent-SC</td><td>Qwen-VL 7B</td><td class="has-text-centered xmark">&#10007;</td>
+              <td class="group-l">34.6</td><td>34.8</td><td class="shade">46.6</td>
+              <td class="group-l">48.2</td><td>61.8</td><td class="shade">20.9</td>
+              <td class="group-l">40.4</td><td>47.9</td><td class="shade">33.8</td>
+            </tr>
+            <tr>
+              <td>SegAgent-SAM</td><td>Qwen-VL 7B</td><td class="has-text-centered xmark">&#10007;</td>
+              <td class="group-l">33.1</td><td>31.7</td><td class="shade">48.2</td>
+              <td class="group-l">45.9</td><td>56.0</td><td class="shade">19.8</td>
+              <td class="group-l">38.5</td><td>43.1</td><td class="shade">35.0</td>
+            </tr>
+            <tr>
+              <td>GuidelineSeg<sup>&dagger;</sup></td><td>Gemini 2.5 Flash</td><td class="has-text-centered xmark">&#10007;</td>
+              <td class="group-l">33.4</td><td>33.8</td><td class="shade">46.5</td>
+              <td class="group-l">46.5</td><td>56.3</td><td class="shade">19.7</td>
+              <td class="group-l">39.0</td><td>44.1</td><td class="shade">34.6</td>
+            </tr>
+            <tr>
+              <td>Evol-SAM3</td><td>Qwen2.5-VL 7B</td><td class="has-text-centered cmark">&#10003;</td>
+              <td class="group-l">41.4</td><td>44.4</td><td class="shade">43.9</td>
+              <td class="group-l">50.7</td><td>57.1</td><td class="shade">22.3</td>
+              <td class="group-l">45.3</td><td>50.3</td><td class="shade">35.0</td>
+            </tr>
+
+            <tr class="thin-rule">
+              <td rowspan="6">SAM3 Agent</td><td>Gemini 2.5 Flash Lite</td><td class="has-text-centered cmark">&#10003;</td>
+              <td class="group-l">39.6</td><td>38.8</td><td class="shade">58.6</td>
+              <td class="group-l">54.0</td><td>60.9</td><td class="shade">30.6</td>
+              <td class="group-l">45.7</td><td>47.7</td><td class="shade">48.4</td>
+            </tr>
+            <tr>
+              <td>Qwen3-VL 32B Think</td><td class="has-text-centered cmark">&#10003;</td>
+              <td class="group-l">40.5</td><td>39.1</td><td class="shade">58.8</td>
+              <td class="group-l">55.0</td><td>62.1</td><td class="shade">27.5</td>
+              <td class="group-l">46.4</td><td>48.1</td><td class="shade">48.0</td>
+            </tr>
+            <tr>
+              <td>GPT-5.6 Luna</td><td class="has-text-centered cmark">&#10003;</td>
+              <td class="group-l">40.8</td><td>39.2</td><td class="shade">58.8</td>
+              <td class="group-l">57.2</td><td>68.3</td><td class="shade">27.4</td>
+              <td class="group-l">47.7</td><td>50.7</td><td class="shade">47.3</td>
+            </tr>
+            <tr>
+              <td>GPT-6 Luna</td><td class="has-text-centered cmark">&#10003;</td>
+              <td class="group-l">40.0</td><td>39.1</td><td class="shade">58.7</td>
+              <td class="group-l">55.7</td><td>65.5</td><td class="shade">28.2</td>
+              <td class="group-l">46.7</td><td>49.7</td><td class="shade">47.5</td>
+            </tr>
+            <tr>
+              <td>GLM 5.3 Flash</td><td class="has-text-centered cmark">&#10003;</td>
+              <td class="group-l">40.5</td><td>39.5</td><td class="shade">58.4</td>
+              <td class="group-l">57.3</td><td>67.3</td><td class="shade">26.7</td>
+              <td class="group-l">47.6</td><td>50.7</td><td class="shade">46.7</td>
+            </tr>
+            <tr>
+              <td>DeepSeek V4.1 Flash</td><td class="has-text-centered cmark">&#10003;</td>
+              <td class="group-l second">40.7</td><td class="second">39.2</td><td class="shade second">59.0</td>
+              <td class="group-l second">57.3</td><td class="second">68.2</td><td class="shade second">26.5</td>
+              <td class="group-l second">47.7</td><td class="second">50.6</td><td class="shade second">47.3</td>
+            </tr>
+
+            <tr class="group-row"><td colspan="12"><em>Vision Harnessing Agent for Segmentation</em></td></tr>
+            <tr class="ours-row">
+              <td rowspan="6"><strong>VASA (ours)</strong></td><td>Gemini 2.5 Flash Lite</td><td class="has-text-centered cmark">&#10003;</td>
+              <td class="group-l">48.0</td><td>51.6</td><td class="shade">39.7</td>
+              <td class="group-l">58.5</td><td>75.5</td><td class="shade">11.0</td>
+              <td class="group-l">52.4</td><td>62.6</td><td class="shade">27.4</td>
+            </tr>
+            <tr class="ours-row">
+              <td>Qwen3-VL 32B Think</td><td class="has-text-centered cmark">&#10003;</td>
+              <td class="group-l">54.0</td><td>56.9</td><td class="shade">33.5</td>
+              <td class="group-l">60.8</td><td>77.0</td><td class="shade">10.0</td>
+              <td class="group-l">56.9</td><td>66.5</td><td class="shade">22.9</td>
+            </tr>
+            <tr class="ours-row">
+              <td>GPT-5.6 Luna</td><td class="has-text-centered cmark">&#10003;</td>
+              <td class="group-l">54.6</td><td>56.5</td><td class="shade">37.2</td>
+              <td class="group-l">61.8</td><td>73.9</td><td class="shade">11.6</td>
+              <td class="group-l">57.7</td><td>64.5</td><td class="shade">26.5</td>
+            </tr>
+            <tr class="ours-row">
+              <td>GPT-6 Luna</td><td class="has-text-centered cmark">&#10003;</td>
+              <td class="group-l">54.5</td><td>54.9</td><td class="shade">40.5</td>
+              <td class="group-l">67.4</td><td>78.0</td><td class="shade">12.5</td>
+              <td class="group-l">60.0</td><td>65.3</td><td class="shade">28.8</td>
+            </tr>
+            <tr class="ours-row">
+              <td>GLM 5.3 Flash</td><td class="has-text-centered cmark">&#10003;</td>
+              <td class="group-l">55.0</td><td>57.8</td><td class="shade">36.3</td>
+              <td class="group-l">65.5</td><td>78.6</td><td class="shade">11.2</td>
+              <td class="group-l">59.5</td><td>67.5</td><td class="shade">25.4</td>
+            </tr>
+            <tr class="ours-row">
+              <td>DeepSeek V4.1 Flash</td><td class="has-text-centered cmark">&#10003;</td>
+              <td class="group-l best">59.8</td><td class="best">62.7</td><td class="shade best">30.4</td>
+              <td class="group-l best">68.6</td><td class="best">80.6</td><td class="shade best">10.3</td>
+              <td class="group-l best">63.5</td><td class="best">71.4</td><td class="shade best">21.2</td>
+            </tr>
+            <tr class="gain-row">
+              <td colspan="3"><em>largest gain v.s. prior SOTA (SAM3 Agent)</em></td>
+              <td class="group-l">+19.1</td><td>+23.5</td><td class="shade">+28.6</td>
+              <td class="group-l">+11.3</td><td>+12.4</td><td class="shade">+16.2</td>
+              <td class="group-l">+15.8</td><td>+20.8</td><td class="shade">+26.1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div></div>
+      <p class="table-note">
+        <strong>VASA consistently outperforms prior methods across VLMs and remains competitive with a fully supervised segmenter on PARS.</strong>
+        All results are reproduced by the authors. We use xIoU as the secondary metric for cross-concept confusion, alongside gIoU and cIoU.
+        <sup>*</sup>Semantic-SAM relies on a ground-truth-derived point prompt.
+        <sup>&dagger;</sup>GuidelineSeg uses Gemma 3 4B as a second VLM.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- End main results -->
+
+
+<!-- RefCOCOm -->
+
+<section class="section hero is-small is-light">
+  <div class="container is-max-desktop">
+    <div class="content">
+      <h2 class="title is-3 has-text-centered">Results on RefCOCOm and ReasonSeg</h2>
+      <div class="columns is-vcentered">
+        <div class="column is-half">
+          <div class="table-card"><div class="table-scroll">
+            <table class="table is-narrow is-fullwidth results-table">
+              <thead>
+                <tr>
+                  <th rowspan="2">Method</th>
+                  <th colspan="2" class="has-text-centered group-l">val</th>
+                  <th colspan="2" class="has-text-centered group-l">testA</th>
+                  <th colspan="2" class="has-text-centered group-l">testB</th>
+                </tr>
+                <tr>
+                  <th class="has-text-centered group-l">Part</th><th class="has-text-centered">+Obj</th>
+                  <th class="has-text-centered group-l">Part</th><th class="has-text-centered">+Obj</th>
+                  <th class="has-text-centered group-l">Part</th><th class="has-text-centered">+Obj</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>X-Decoder</td><td class="group-l">16.2</td><td>29.5</td><td class="group-l">13.6</td><td>23.6</td><td class="group-l">20.3</td><td>33.8</td></tr>
+                <tr><td>SEEM</td><td class="group-l">16.1</td><td>29.4</td><td class="group-l">13.6</td><td>23.4</td><td class="group-l">20.4</td><td>33.9</td></tr>
+                <tr><td>UniRES</td><td class="group-l">19.6</td><td>34.3</td><td class="group-l">16.4</td><td>27.8</td><td class="group-l">25.2</td><td>41.7</td></tr>
+                <tr><td>SAM3</td><td class="group-l">12.3</td><td>17.3</td><td class="group-l">9.0</td><td>13.0</td><td class="group-l">20.7</td><td>26.1</td></tr>
+                <tr class="end-group"><td>SAM3-I</td><td class="group-l">17.0</td><td>29.5</td><td class="group-l">14.7</td><td>24.7</td><td class="group-l">22.3</td><td>36.1</td></tr>
+
+                <tr><td>LISA</td><td class="group-l">21.3</td><td>34.3</td><td class="group-l">18.5</td><td>28.6</td><td class="group-l">25.7</td><td>40.1</td></tr>
+                <tr><td>GSVA</td><td class="group-l">11.4</td><td>23.1</td><td class="group-l">9.2</td><td>19.2</td><td class="group-l">16.8</td><td>28.2</td></tr>
+                <tr><td>GLaMM</td><td class="group-l">21.4</td><td>35.3</td><td class="group-l">18.6</td><td>29.5</td><td class="group-l">26.9</td><td>41.1</td></tr>
+                <tr><td>M<sup>2</sup>SA</td><td class="group-l">22.4</td><td>35.5</td><td class="group-l">19.9</td><td>30.1</td><td class="group-l">27.1</td><td>41.4</td></tr>
+                <tr class="end-group"><td>RESAnything</td><td class="group-l">27.6</td><td>&ndash;</td><td class="group-l">26.5</td><td>&ndash;</td><td class="group-l">25.8</td><td>&ndash;</td></tr>
+
+                <tr><td>CoReS</td><td class="group-l">21.2</td><td>29.5</td><td class="group-l">17.3</td><td>24.0</td><td class="group-l">20.6</td><td>30.6</td></tr>
+                <tr><td>SegAgent-SC</td><td class="group-l">19.7</td><td>33.4</td><td class="group-l">16.8</td><td>27.3</td><td class="group-l">22.9</td><td>38.0</td></tr>
+                <tr><td>SegAgent-SAM</td><td class="group-l">19.7</td><td>32.9</td><td class="group-l">16.9</td><td>27.1</td><td class="group-l">22.6</td><td>36.7</td></tr>
+                <tr><td>Evol-SAM3</td><td class="group-l">24.3</td><td>34.0</td><td class="group-l">20.6</td><td>28.8</td><td class="group-l">30.8</td><td>41.0</td></tr>
+                <tr class="end-group"><td>SAM3 Agent</td><td class="group-l second">40.2</td><td class="second">48.1</td><td class="group-l second">34.4</td><td class="second">41.5</td><td class="group-l second">41.3</td><td class="second">50.4</td></tr>
+
+                <tr class="ours-row"><td><strong>VASA (ours)</strong></td><td class="group-l best">45.0</td><td class="best">51.1</td><td class="group-l best">43.2</td><td class="best">47.4</td><td class="group-l best">47.6</td><td class="best">54.1</td></tr>
+                <tr class="gain-row"><td><em>v.s. prior SOTA</em></td><td class="group-l">+4.8</td><td>+3.0</td><td class="group-l">+8.8</td><td>+5.9</td><td class="group-l">+6.3</td><td>+3.7</td></tr>
+              </tbody>
+            </table>
+          </div></div>
+        </div>
+        <div class="column is-half">
+          <p>
+            <strong>VASA achieves state-of-the-art performance on the standard multi-granularity referring segmentation benchmark RefCOCOm</strong>, with the largest gains on the fine-grained parts.
+            We report gIoU for part-only (Part) and combined part-and-object (+Obj), with Qwen3-VL 32B Thinking as the VLM.
+          </p>
+          <p>
+            Compared with SAM3 Agent, it improves gIoU by up to 8.8% in the part-only setting and 5.9% in the combined part-and-object setting.
+          </p>
+          <p>
+            <strong>ReasonSeg.</strong> With Qwen3-VL 32B Thinking, VASA achieves 72.1% validation and 70.6% test gIoU, compared with 71.9% and 69.4% for SAM3 Agent. While intended for challenging open ad-hoc concepts, VASA remains competitive on conventional reasoning segmentation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- End RefCOCOm -->
+
+
+<!-- Harness ablation -->
+
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="content">
+      <h2 class="title is-3">Harness Component Ablation</h2>
+      <p>
+        <strong>A working mask alone does not establish an effective visual construction process; it benefits from coordinated guidance from VASA's complete harness.</strong>
+      </p>
+      <div class="columns is-vcentered">
+        <div class="column is-three-fifths">
+          <div class="table-card"><div class="table-scroll">
+            <table class="table is-narrow is-fullwidth results-table">
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th class="has-text-centered">W.M.</th><th class="has-text-centered">Strategy</th>
+                  <th class="has-text-centered">C&amp;S</th><th class="has-text-centered">E.R.</th>
+                  <th class="has-text-centered group-l">gIoU</th><th class="has-text-centered">cIoU</th><th class="has-text-centered shade">xIoU&darr;</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="end-group">
+                  <td>SAM3 Agent</td><td class="has-text-centered">&ndash;</td><td class="has-text-centered">&ndash;</td><td class="has-text-centered">&ndash;</td><td class="has-text-centered">&ndash;</td>
+                  <td class="group-l">46.4</td><td>48.1</td><td class="shade">48.0</td>
+                </tr>
+                <tr>
+                  <td>W.M. Only</td><td class="has-text-centered cmark">&#10003;</td><td class="has-text-centered">&ndash;</td><td class="has-text-centered">&ndash;</td><td class="has-text-centered">&ndash;</td>
+                  <td class="group-l">40.0</td><td>46.1</td><td class="shade">37.5</td>
+                </tr>
+                <tr>
+                  <td>+ Strategy</td><td class="has-text-centered cmark">&#10003;</td><td class="has-text-centered cmark">&#10003;</td><td class="has-text-centered">&ndash;</td><td class="has-text-centered">&ndash;</td>
+                  <td class="group-l">44.9</td><td>55.1</td><td class="shade">29.3</td>
+                </tr>
+                <tr>
+                  <td>+ C&amp;S</td><td class="has-text-centered cmark">&#10003;</td><td class="has-text-centered cmark">&#10003;</td><td class="has-text-centered cmark">&#10003;</td><td class="has-text-centered">&ndash;</td>
+                  <td class="group-l">48.3</td><td>59.9</td><td class="shade">27.3</td>
+                </tr>
+                <tr class="ours-row">
+                  <td><strong>VASA (ours)</strong></td><td class="has-text-centered cmark">&#10003;</td><td class="has-text-centered cmark">&#10003;</td><td class="has-text-centered cmark">&#10003;</td><td class="has-text-centered cmark">&#10003;</td>
+                  <td class="group-l best">56.9</td><td class="best">66.5</td><td class="shade best">22.9</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></div>
+          <p class="table-note">
+            W.M.: working mask; C&amp;S: constraints &amp; scrutiny; E.R.: error recovery.
+          </p>
+        </div>
+        <div class="column is-two-fifths">
+          <ul class="ablation-steps">
+            <li><strong>Working mask only.</strong> The mechanism for accumulating visual progress, without the guidance to use it reliably: xIoU improves from 48.0% to 37.5%, but gIoU drops from 46.4% to 40.0%.</li>
+            <li><strong>+ Strategy.</strong> Partially addresses this limitation, raising gIoU to 44.9%.</li>
+            <li><strong>+ Constraints and scrutiny.</strong> Further improve gIoU to 48.3%.</li>
+            <li><strong>+ Error recovery.</strong> The complete harness reaches 56.9% with the lowest xIoU of 22.9%, the largest single gain. In a long construction sequence, a failed step can mislead subsequent actions.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- End harness ablation -->
+
+
+<!-- VLM capability and cost -->
+
+<section class="section hero is-small is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Which VLM Capabilities Matter Most for VASA?</h2>
+          <div class="plot-row">
+            <figure><img src="static/images/plots/mmmu_pro.png" width="1433" height="1114" alt="Overall PARS gIoU against MMMU-Pro score across VLMs" class="blend-img-background" loading="lazy" /><figcaption>a) MMMU-Pro score</figcaption></figure>
+            <figure><img src="static/images/plots/hle.png" width="1433" height="1108" alt="Overall PARS gIoU against Humanity's Last Exam score across VLMs" class="blend-img-background" loading="lazy" /><figcaption>b) HLE score</figcaption></figure>
+            <figure><img src="static/images/plots/tokens.png" width="1494" height="1108" alt="Overall PARS gIoU against tokens per query across VLMs" class="blend-img-background" loading="lazy" /><figcaption>c) tokens/query (k)</figcaption></figure>
+            <figure><img src="static/images/plots/cost.png" width="1509" height="1070" alt="Overall PARS gIoU against API cost per query across VLMs" class="blend-img-background" loading="lazy" /><figcaption>d) cost/query ($)</figcaption></figure>
+          </div>
+          <p>
+            <strong>VASA's performance <em>v.s.</em> VLM capability and inference cost.</strong>
+            Both benchmarks correlate strongly with gIoU with Pearson <em>r</em>&nbsp;=&nbsp;0.88, re-verifying that VASA translates stronger VLM capabilities into better open ad-hoc segmentation performance.
+            Across VLM backbones, better segmentation is often obtained using fewer tokens (<em>r</em>&nbsp;=&nbsp;&minus;0.68), suggesting that more capable models can reach better solutions with fewer tokens.
+            API cost has a less clear relationship with performance, as it also reflects provider-specific pricing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- End VLM capability and cost -->
+
+
+<!-- Query detail ablation -->
+
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="content">
+      <h2 class="title is-3">Effect of Detailed Queries</h2>
+      <div class="columns is-vcentered">
+        <div class="column is-two-fifths">
+          <div class="table-card"><div class="table-scroll">
+            <table class="table is-narrow is-fullwidth results-table">
+              <thead>
+                <tr>
+                  <th>Method</th><th>Text</th>
+                  <th class="has-text-centered group-l">gIoU</th><th class="has-text-centered">cIoU</th><th class="has-text-centered shade">xIoU&darr;</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>SAM3 Agent</td><td>short</td><td class="group-l best">46.4</td><td class="best">48.1</td><td class="shade">48.0</td></tr>
+                <tr class="end-group"><td>SAM3 Agent</td><td>long</td><td class="group-l">24.3</td><td>34.5</td><td class="shade best">30.7</td></tr>
+                <tr class="ours-row"><td><strong>VASA (ours)</strong></td><td>short</td><td class="group-l">51.0</td><td>51.3</td><td class="shade">41.7</td></tr>
+                <tr class="ours-row"><td><strong>VASA (ours)</strong></td><td>long</td><td class="group-l best">56.9</td><td class="best">66.5</td><td class="shade best">22.9</td></tr>
+              </tbody>
+            </table>
+          </div></div>
+        </div>
+        <div class="column is-three-fifths">
+          <img src="static/images/query_detail.jpg" width="975" height="276" alt="SAM3 Agent and VASA on a polar bear image with the short and the long query" class="blend-img-background center-image" loading="lazy" />
+        </div>
+      </div>
+      <p>
+        <strong>Detailed long-form queries improve VASA but overwhelm SAM3 Agent.</strong>
+        Long queries improve VASA by 5.9% in gIoU, but reduce SAM3 Agent by 22.1% in gIoU.
+        Short query: <em>&ldquo;the body of polar bear&rdquo;</em>. Long query (shortened): <em>&ldquo;Segment the torso of the polar bear, starting from below the head to just above the legs.&rdquo;</em>
+        The short query is ambiguous, leading both methods to segment the entire bear. The long-form query resolves the ambiguity, but SAM3 Agent (S.A.) completely fails. In contrast, VASA successfully follows the query and isolates the requested torso region.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- End query detail ablation -->
+
+
+<!-- Reasoning rounds -->
+
+<section class="section hero is-small is-light">
+  <div class="container is-max-desktop">
+    <div class="content">
+      <h2 class="title is-3">Reasoning Rounds and Inference Cost</h2>
+      <div class="columns is-vcentered">
+        <div class="column is-two-fifths">
+          <img src="static/images/plots/reason_vs_iou.png" width="1026" height="706" alt="Additional reasoning steps used by VASA over SAM3 Agent against the corresponding gIoU improvement" class="center-image" loading="lazy" />
+        </div>
+        <div class="column is-three-fifths">
+          <p>
+            Both VASA and SAM3 Agent are allowed up to 20 reasoning rounds. Yet SAM3 Agent stops after just 3.8 rounds on average despite its lower segmentation results, struggling to turn the remaining budget into further improvements. VASA instead uses 7.9 rounds, while making only slightly more segmentation calls (3.4 versus 3.1).
+          </p>
+          <div class="table-card"><div class="table-scroll">
+            <table class="table is-narrow is-fullwidth results-table">
+              <thead>
+                <tr><th>Method</th><th class="has-text-centered">SAM3 calls</th><th class="has-text-centered">Reason. rounds</th><th class="has-text-centered">Time per image</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>SAM3 Agent</td><td class="has-text-centered">3.1</td><td class="has-text-centered">3.8</td><td class="has-text-centered">5.2 s</td></tr>
+                <tr class="ours-row"><td><strong>VASA (ours)</strong></td><td class="has-text-centered">3.4</td><td class="has-text-centered">7.9</td><td class="has-text-centered">9.3 s</td></tr>
+              </tbody>
+            </table>
+          </div></div>
+          <p class="table-note">
+            We report average inference statistics on PARS with Qwen3-VL 32B Thinking hosted on an 8&times; NVIDIA A40 server under the same 20-round budget.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- End reasoning rounds -->
+
+
+<!-- Qualitative -->
+
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="content">
+      <h2 class="title is-3">Qualitative Comparisons</h2>
+      <img src="static/images/qualitative.jpg" width="1635" height="740" alt="SAM3 Agent, VASA and ground truth compared on three PARS queries and three RefCOCOm queries" class="blend-img-background center-image" loading="lazy" />
+      <p>
+        <strong>Qualitative comparisons between SAM3 Agent and VASA on PARS (left) and RefCOCOm (right).</strong>
+        SAM3 Agent often oversegments semantically related regions or confuses nearby concepts, while VASA precisely follows the text query through visual reasoning and iterative mask refinement.
+        PARS prompts are shortened for clarity, while RefCOCOm prompts are original.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- End qualitative -->
+
+
+<!--BibTex citation -->
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@misc{wang2026vasa,
+  title={Vision Harnessing Agent for Open Ad-hoc Segmentation},
+  author={Zilin Wang and Stella X. Yu},
+  year={2026},
+  eprint={2605.19410},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2605.19410}
+}</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+      <!-- Visitor counter, styled as on the OAK page. The id belongs to
+           https://vasa-2026.github.io/ on mapmyvisitors.com. -->
+      <a href='https://mapmyvisitors.com/web/1c8j2' title='Visit tracker'><img src='https://mapmyvisitors.com/map.png?cl=080808&w=a&t=m&d=OUHDkWbOcv_RH22rzdaKBykVfCgXyDik1ljcaG2eHTw&co=ffffff&ct=808080' alt='Visitor map' /></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var frame = document.getElementById('run-viewer');
+    var tabs = document.querySelectorAll('.run-tab');
+    var current = tabs[0].dataset.src;
+    var seen = false;
+
+    // The replay plays as soon as it loads, so hold the load until it is on
+    // screen. Without IntersectionObserver, load straight away.
+    function start() {
+      if (seen) return;
+      seen = true;
+      frame.src = current;
+    }
+    if ('IntersectionObserver' in window) {
+      var watch = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { start(); watch.disconnect(); }
+      }, { threshold: 0.35 });
+      watch.observe(frame);
+    } else {
+      start();
+    }
+
+    // The viewer is a complete standalone document, so changing src is enough
+    // to restart it cleanly on another run.
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (other) { other.classList.add('is-outlined'); });
+        tab.classList.remove('is-outlined');
+        current = tab.dataset.src;
+        seen = true;
+        frame.src = current;
+      });
+    });
+  })();
+</script>
+
+  </body>
+  </html>
